@@ -47,6 +47,11 @@ set noswapfile
 set undodir=~/.vim/undo-dir
 set undofile
 
+" Start file at last open line
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
+
 " Searching
 set ignorecase	" Ignore case when searching
 set smartcase	  " When searching try to be smart about cases
